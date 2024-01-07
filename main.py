@@ -8,13 +8,16 @@ bot = telebot.TeleBot('6808687019:AAHpcxKWXQm3_D8LNXNyj_rJYIRGv2wvNvs')
 
 @bot.message_handler(commands=['start'])
 def start1(message):
+    user_id = message.from_user.id
     kb = types.ReplyKeyboardMarkup()
-    btn1 = types.KeyboardButton('Send to demon lord')
+    btn1 = types.KeyboardButton('Send to demon lord😈')
     kb.row(btn1)
     btn2 = types.KeyboardButton('Delete')
     btn3 = types.KeyboardButton('Change')
     kb.add(btn2, btn3)
-    bot.reply_to(message, '!!?!?!', reply_markup=kb)
+    file = open('./damn.jpg', 'rb')
+    bot.send_photo(user_id, file, reply_markup=kb)
+    # bot.reply_to(message, '!!?!?!', reply_markup=kb)
     bot.register_next_step_handler(message, click_on)
 
 
